@@ -1,0 +1,2 @@
+res/raw/text.txt 파일의 내용입니다
+잘 뜬다

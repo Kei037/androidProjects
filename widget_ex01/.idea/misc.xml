@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22971939040534767" />
+        <entry key="app/src/main/res/layout/frame_layout01.xml" value="0.3416355077771173" />
+        <entry key="app/src/main/res/layout/grid_layout01.xml" value="0.2763095800427423" />
+        <entry key="app/src/main/res/layout/layout01.xml" value="0.13753799392097266" />
+        <entry key="app/src/main/res/layout/linear_layout01.xml" value="0.23465408278816016" />
+        <entry key="app/src/main/res/layout/linear_layout02.xml" value="0.34009536696784765" />
+        <entry key="app/src/main/res/layout/linear_layout03.xml" value="0.296736520960711" />
+        <entry key="app/src/main/res/layout/linear_layout_test.xml" value="0.2647952978161797" />
+        <entry key="app/src/main/res/layout/linear_layout_test2.xml" value="0.15579710144927536" />
+        <entry key="app/src/main/res/layout/relative_layout01.xml" value="0.15579710144927536" />
+        <entry key="app/src/main/res/layout/relative_layout02.xml" value="0.28814277096071106" />
+        <entry key="app/src/main/res/layout/relative_layout03.xml" value="0.3015872900036798" />
+        <entry key="app/src/main/res/layout/table_layout01.xml" value="0.25791015625" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
