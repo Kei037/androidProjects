@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var btnInit: Button
     lateinit var btnInsert: Button
     lateinit var btnSelect: Button
+    lateinit var btnUpdate: Button
+    lateinit var btnDelete: Button
     lateinit var sqlDB: SQLiteDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +36,8 @@ class MainActivity : AppCompatActivity() {
         btnInit = findViewById(R.id.btnInit)
         btnInsert = findViewById(R.id.btnInsert)
         btnSelect = findViewById(R.id.btnSelect)
+        btnUpdate = findViewById(R.id.btnUpdate)
+        btnDelete = findViewById(R.id.btnDelete)
 
         myHelper = MyDBHelper(this)
 
@@ -72,6 +76,29 @@ class MainActivity : AppCompatActivity() {
             cursor.close()
             sqlDB.close()
         }
+        // 수정
+        btnUpdate.setOnClickListener {
+            sqlDB = myHelper.writableDatabase
+            val name = editName.text.toString()
+            val number = editNumber.text.toString()
+
+            sqlDB.execSQL("UPDATE groupTBL SET gNumber = $number WHERE gName = '$name';")
+            Toast.makeText(applicationContext, "수정됨", Toast.LENGTH_SHORT).show()
+
+            sqlDB.close()
+        }
+
+        // 삭제
+        btnDelete.setOnClickListener {
+            sqlDB = myHelper.writableDatabase
+            val name = editName.text.toString()
+
+            sqlDB.execSQL("DELETE FROM groupTBL WHERE gName = '$name';")
+            Toast.makeText(applicationContext, "삭제됨", Toast.LENGTH_SHORT).show()
+
+            sqlDB.close()
+        }
+
 
     }
     // groupDB가 데이터베이스 생성명
