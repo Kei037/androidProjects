@@ -14,6 +14,16 @@ class ResultActivity : AppCompatActivity() {
 
         // MainActivity에서 보낸 투표 결과 값을 받음
         title = "투표결과"
+
+        initializeUI()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        initializeUI()
+    }
+
+    private fun initializeUI() {
         val intent = intent
         val voteCounts = intent.getIntArrayExtra("voteCounts")
         val imageNames = intent.getStringArrayExtra("imageNames")

@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    inner class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "groupDB", null, 1) {
+    inner class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "my_db", null, 1) {
         override fun onCreate(db: SQLiteDatabase?) {
             db!!.execSQL("CREATE TABLE my_diary (diary_date CHAR(10) PRIMARY KEY, content VARCHAR(500));")
         }

@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
@@ -33,12 +34,23 @@ class MainActivity : AppCompatActivity() {
 
         var toast: Toast = Toast.makeText(applicationContext, "", Toast.LENGTH_SHORT)
 
+        val maxVote = 5
+
         for (i in imageIds.indices) {
             images[i] = findViewById(imageIds[i])
             images[i]!!.setOnClickListener {
                 // 이전 Toast가 있다면 취소
                 toast.cancel()
+
+                // 최대 투표수 5표
+                if (voteCounts[i] == maxVote) {
+                    toast = Toast.makeText(applicationContext, "이미 최대 투표수에 도달했습니다.", Toast.LENGTH_SHORT)
+                    toast.show()
+                    Log.i("투표수", voteCounts[i].toString())
+                    return@setOnClickListener
+                }
                 voteCounts[i]++
+
                 // 새로운 Toast 표시
                 toast = Toast.makeText(applicationContext, "${imageNames[i]} : 총 ${voteCounts[i]} 표", Toast.LENGTH_SHORT)
                 toast.show()
