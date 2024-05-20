@@ -3,7 +3,6 @@ package com.kei037.activity_intent_ex04
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
