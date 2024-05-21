@@ -1,13 +1,13 @@
-package com.kei037.db_sqlite_ex02
+package com.kei037.db_sqlite_ex03
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.kei037.db_sqlite_ex02.databinding.ItemRecyclerBinding
+import com.kei037.db_sqlite_ex03.databinding.ItemRecyclerBinding
 import java.text.SimpleDateFormat
 
 class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.Holder>() {
-    var helper: SQLiteHelper? = null
+//    var helper: SQLiteHelper? = null
     val listData = mutableListOf<Memo>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
