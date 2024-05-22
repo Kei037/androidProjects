@@ -20,4 +20,5 @@ class RoomMemo {
         this.content = content
         this.datetime = datetime
     }
+
 }
