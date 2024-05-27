@@ -70,8 +70,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun loadLibrary() {
         val my_api_key = "48704b64446a756e3637476d684e61"
 
+        // Retrofit 객체 생성
         val retrofitAPI = RetrofitConnection.getInstance().create(LibraryService::class.java)
-        retrofitAPI.getLibrary(my_api_key).enqueue(object : Callback<LibraryResponse> {
+        retrofitAPI.getLibrary(my_api_key).enqueue(object : Callback<LibraryResponse> { // 서버로부터 데이터를 가져옴
             override fun onResponse(
                 call: Call<LibraryResponse>,
                 response: Response<LibraryResponse>
