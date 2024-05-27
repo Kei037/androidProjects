@@ -56,12 +56,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
         loadLibrary()
         mMap.setOnMarkerClickListener {
-            if (it.tag != null) {
-                var url = it.tag as String
-                if (!url.startsWith("http")) {
+            if (it.tag != null) { // 마커의 tag가 null이 아니면
+                var url = it.tag as String // tag를 String으로 변환
+                if (!url.startsWith("http")) { // http로 시작하지 않으면 붙여줌
                     url = "http://$url"
                 }
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)) // 해당 url로 이동
                 startActivity(intent)
             }
             true
