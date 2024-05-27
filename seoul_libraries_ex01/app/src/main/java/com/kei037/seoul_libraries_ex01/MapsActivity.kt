@@ -1,5 +1,7 @@
 package com.kei037.seoul_libraries_ex01
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -53,6 +55,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 //        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
         loadLibrary()
+        mMap.setOnMarkerClickListener {
+            if (it.tag != null) {
+                var url = it.tag as String
+                if (!url.startsWith("http")) {
+                    url = "http://$url"
+                }
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                startActivity(intent)
+            }
+            true
+        }
     }
     private fun loadLibrary() {
         val my_api_key = "48704b64446a756e3637476d684e61"
@@ -75,10 +88,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // 마커의 영역을 저장하는 변수 생성
         val latLngBounds = LatLngBounds.Builder()
 
-        for (lib in libraryResponse.SeoulPublicLibraryInfo.row) {
-            val position = LatLng(lib.XCNTS.toDouble(), lib.YDNTS.toDouble())
-            val marker = MarkerOptions().position(position).title(lib.LBRRY_NAME)
-            mMap.addMarker(marker)
+        for (library in libraryResponse.SeoulPublicLibraryInfo.row) {
+            val position = LatLng(library.XCNTS.toDouble(), library.YDNTS.toDouble())
+            val marker = MarkerOptions().position(position).title(library.LBRRY_NAME)
+//            mMap.addMarker(marker)
+            val obj = mMap.addMarker(marker)
+            obj?.tag = library.HMPG_URL
 
             // 지도에 마커를 추가한구 마커의 위치를 latLngBounds에 추가
             latLngBounds.include(marker.position)
