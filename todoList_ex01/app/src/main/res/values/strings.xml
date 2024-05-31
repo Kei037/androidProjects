@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">todoList_ex01</string>
+    <string name="add_todo">할 일 추가하기</string>
+</resources>
