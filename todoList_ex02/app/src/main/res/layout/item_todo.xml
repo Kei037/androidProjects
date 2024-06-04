@@ -30,4 +30,16 @@
         app:layout_constraintStart_toEndOf="@+id/textViewImportance"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewDoneDate"
+        app:layout_constraintStart_toStartOf="@id/textViewImportance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewImportance"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="20dp"
+        android:text="2020-01-01" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

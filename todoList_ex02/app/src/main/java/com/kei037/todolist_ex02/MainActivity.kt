@@ -47,11 +47,10 @@ class MainActivity : AppCompatActivity(), OnItemLongClickListener {
     private fun setRecyclerView() {
         // 리사이클러뷰 설정
         runOnUiThread {
-            adapter = TodoRecyclerViewAdapter(todoList, this) // 어댑터 객체 할당
-            // 리사이클러뷰 어댑터 설정
-            binding.recyclerView.adapter = adapter
-            // 레이아웃 매니저 설정
+            adapter = TodoRecyclerViewAdapter(todoList, this)
             binding.recyclerView.layoutManager = LinearLayoutManager(this)
+            binding.recyclerView.adapter = adapter
+
         }
     }
 

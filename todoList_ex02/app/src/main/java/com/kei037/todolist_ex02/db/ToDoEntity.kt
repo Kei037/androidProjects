@@ -13,5 +13,8 @@ data class ToDoEntity ( // 테이블 이름은 ToDoEntity로 설정
     val title: String,
 
     @ColumnInfo(name = "importance")
-    val importance: Int
+    val importance: Int,
+
+    @ColumnInfo(name = "doneDate")
+    val doneDate: String
 )
