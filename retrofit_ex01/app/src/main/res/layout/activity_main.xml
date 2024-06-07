@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.18" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.82" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+
+    <TextView
+        android:id="@+id/textViewLocationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="다사읍"
+        android:letterSpacing="-0.05"
+        android:textColor="#000000"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/guideline01"
+        app:layout_constraintTop_toTopOf="@id/guideline04"/>
+
+    <TextView
+        android:id="@+id/textViewLocationSubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="대한민국 대구광역시"
+        android:letterSpacing="-0.05"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/guideline01"
+        app:layout_constraintTop_toBottomOf="@id/textViewLocationTitle"/>
+
+    <ImageView
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:src="@drawable/icon_thunder"
+        app:layout_constraintStart_toEndOf="@id/textViewLocationTitle"
+        app:layout_constraintTop_toTopOf="@id/textViewLocationTitle"
+        app:layout_constraintBottom_toBottomOf="@id/textViewLocationTitle"/>
+
+    <ImageView
+        android:id="@+id/imageBg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/bg_soso"
+        app:layout_constraintStart_toStartOf="@id/guideline02"
+        app:layout_constraintEnd_toEndOf="@+id/guideline03"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintVertical_bias="0.4"/>
+
+    <TextView
+        android:id="@+id/textViewCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="61"
+        android:letterSpacing="0.05"
+        android:textColor="#4c4c4c"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/imageBg"
+        app:layout_constraintTop_toTopOf="@+id/imageBg"
+        app:layout_constraintBottom_toBottomOf="@+id/imageBg"
+        app:layout_constraintEnd_toEndOf="@id/imageBg"/>
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="보통"
+        android:letterSpacing="0.05"
+        android:textColor="#999999"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/imageBg"
+        app:layout_constraintEnd_toEndOf="@id/imageBg"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCount"/>
+
+    <TextView
+        android:id="@+id/checkTIme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="측정 시간"
+        android:letterSpacing="-0.05"
+        android:textColor="#999999"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageBg"
+        android:layout_marginTop="40dp"/>
+
+    <TextView
+        android:id="@+id/textViewCheckTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2023-01-01 12:00"
+        android:letterSpacing="-0.05"
+        android:textColor="#999999"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkTIme"/>
+
+    <ImageView
+        android:id="@+id/btnRefresh"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:src="@drawable/icon_refresh"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCheckTime"
+        android:layout_marginTop="20dp"
+        android:padding="5dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/orange"
+        android:src="@drawable/icon_map"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:tint="@color/white"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
