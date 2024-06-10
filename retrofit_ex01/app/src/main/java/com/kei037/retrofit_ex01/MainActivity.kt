@@ -14,6 +14,8 @@ import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
@@ -52,6 +54,26 @@ class MainActivity : AppCompatActivity() {
     // 위도와 경도를 저장
     var latitude: Double = 0.0
     var longitude: Double = 0.0
+
+    /**
+     * 위치 정보를 가져오는 함수,
+     * 위치 정보를 가져오는데 성공하면 위도와 경도를 저장하고
+     * UI를 업데이트함, 실패시 0, 0으로 초기화
+     * @param locationProvider 위치 정보를 가져오는 객체
+     * @param callback 위치 정보를 가져온 후 실행할 콜백 함수
+     */
+    val startMapActivityResult =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult(),
+            object : ActivityResultCallback<ActivityResult> {
+                override fun onActivityResult(result: ActivityResult?) {
+                    if (result?.resultCode ?: Activity.RESULT_CANCELED == Activity.RESULT_OK) {
+                        latitude = result?.data?.getDoubleExtra("latitude", 0.0) ?: 0.0
+                        longitude = result?.data?.getDoubleExtra("longitude", 0.0) ?: 0.0
+                        updateUI()
+                    }
+                }
+            })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -241,7 +263,7 @@ class MainActivity : AppCompatActivity() {
         retrofitAPI.getAirQualityData(
             latitude.toString(),
             longitude.toString(),
-            "98f39afa-a1b5-472e-ba16-8325d7a3b6f7"
+            "98f39afa-a1b5-472e-ba16-8325d7a3b6f7" // API Key
         ).enqueue(object : Callback<AirQualityResponse> {
             override fun onResponse(
                 call: Call<AirQualityResponse>,
