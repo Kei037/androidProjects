@@ -83,8 +83,19 @@ class MainActivity : AppCompatActivity() {
         checkAllPermissions() // 권한 확인
         updateUI()
         setRefreshButton()
+        setFab()
     }
 
+    private fun setFab() {
+        binding.fab.setOnClickListener {
+            val intent = Intent(this, MapsActivity::class.java)
+            intent.putExtra("currentLat", latitude)
+            intent.putExtra("currentLng", longitude)
+            startMapActivityResult.launch(intent)
+        }
+    }
+
+    // 새로고침 버튼
     private fun setRefreshButton() {
         Log.i("MainActivity", "setRefreshButton")
         binding.btnRefresh.setOnClickListener {
