@@ -1,5 +1,7 @@
 package com.kei037.retrofit_ex01
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -30,6 +32,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
+
+        binding.btnCheckHere.setOnClickListener {
+            mMap?.let {
+                val intent = Intent()
+                intent.putExtra("latitude", it.cameraPosition.target.latitude)
+                intent.putExtra("longitude", it.cameraPosition.target.longitude)
+                setResult(Activity.RESULT_OK, intent)
+                finish()
+            }
+        }
     }
 
     override fun onMapReady(p0: GoogleMap) {
@@ -58,9 +70,18 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun setMarker() {
+        // 마커 설정하는 함수
         mMap?.let {
-            val currentLocation = LatLng(currentLat, currentLng)
-            it.addMarker(MarkerOptions().position(currentLocation).title("현재 위치"))
+            it.clear() // 지도에 있는 마커를 먼저 삭제
+            val markerOptions = MarkerOptions()
+            markerOptions.position(it.cameraPosition.target) // 마커 위치 설정
+            markerOptions.title("마커 위치") // 마커 이름 설정
+            val marker = it.addMarker(markerOptions) // 지도에 마커 추가, 마커 객체를 리턴
+            it.setOnCameraMoveListener {
+                marker?.let { marker ->
+                    marker.setPosition(it.cameraPosition.target) // 마커 위치 변경
+                }
+            }
         }
     }
 }
